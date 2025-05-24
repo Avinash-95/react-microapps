@@ -43,9 +43,10 @@ module.exports = {
   },
   plugins: [
     new ModuleFederationPlugin({
-      name: 'container',
-      remotes: {
-        dashboard: 'dashboard@http://localhost:3001/remoteEntry.js',
+      name: 'dashboard',
+      filename: 'remoteEntry.js',
+      exposes: {
+        './App': './src/App',
       },
       shared: ['react', 'react-dom'],
     }),
@@ -58,9 +59,8 @@ module.exports = {
     static: {
       directory: path.join(__dirname, "public"),
     },
-    historyApiFallback: true,
     compress: true,
-    port: 3000,
+    port: 3001,
     open: true,
   },
 };

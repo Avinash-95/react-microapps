@@ -1,5 +1,5 @@
 {
-  "name": "my-react-webpack-app",
+  "name": "dashboard-mfa-app",
   "version": "1.0.0",
   "description": "A simple React Container App using Webpack5",
   "scripts": {
