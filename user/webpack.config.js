@@ -43,8 +43,8 @@ module.exports = {
   },
   plugins: [
     new ModuleFederationPlugin({
-      name: 'dashboard',
-      filename: 'dashboardRemoteEntry.js',
+      name: 'user',
+      filename: 'userRemoteEntry.js',
       exposes: {
         './App': './src/App',
       },
@@ -60,7 +60,7 @@ module.exports = {
       directory: path.join(__dirname, "public"),
     },
     compress: true,
-    port: 8081,
+    port: 8082,
     open: true,
     client: {
       overlay: false,

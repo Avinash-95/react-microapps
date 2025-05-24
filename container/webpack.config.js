@@ -1,5 +1,6 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ModuleFederationPlugin = require('webpack').container.ModuleFederationPlugin;
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const ModuleFederationPlugin =
+  require("webpack").container.ModuleFederationPlugin;
 const path = require("path");
 const Dotenv = require("dotenv-webpack");
 
@@ -43,13 +44,14 @@ module.exports = {
   },
   plugins: [
     new ModuleFederationPlugin({
-      name: 'container',
+      name: "container",
       remotes: {
-        dashboard: 'dashboard@http://localhost:3001/remoteEntry.js',
+        dashboard: "dashboard@http://localhost:8081/dashboardRemoteEntry.js",
+        user: "user@http://localhost:8082/userRemoteEntry.js",
       },
-      shared: ['react', 'react-dom'],
+      shared: ["react", "react-dom"],
     }),
-    new HtmlWebpackPlugin({ template: './public/index.html' }),
+    new HtmlWebpackPlugin({ template: "./public/index.html" }),
     new Dotenv({
       path: `./.env.${mode}`,
     }),
@@ -62,5 +64,8 @@ module.exports = {
     compress: true,
     port: 3000,
     open: true,
+    client: {
+      overlay: false,
+    },
   },
 };
